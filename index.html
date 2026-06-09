@@ -107,6 +107,53 @@
       </div>
     </section>
 
+    <section class="content-card bridge-card" data-card-id="worked-example-card">
+      <div class="card-frame framed-card">
+        <header class="card-header">
+          <h2>Worked Example</h2>
+          <span class="status-pill">Practice</span>
+        </header>
+
+        <section class="text-block">
+          <h2>Example Problem</h2>
+          <p>
+            Suppose a system has <mark>4 active Arm cores</mark> and <mark>2 GPU clusters</mark>
+            with <mark>5 PEs each</mark>, where <mark>60%</mark> of the GPU PEs are active.
+            How many total active PEs are there?
+          </p>
+        </section>
+
+        <section class="text-block">
+          <h2>Step By Step</h2>
+          <ul class="lesson-list">
+            <li>Arm cores count directly: <mark>4 active cores = 4 active PEs</mark>.</li>
+            <li>Find total GPU PEs first: <mark>2 x 5 = 10 total GPU PEs</mark>.</li>
+            <li>Apply the activity rate: <mark>10 x 60% = 6 active GPU PEs</mark>.</li>
+            <li>Add the active totals: <mark>4 + 6 = 10 active PEs</mark>.</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="content-card bridge-card" data-card-id="common-mistakes-card">
+      <div class="card-frame framed-card">
+        <header class="card-header">
+          <h2>Common Mistakes</h2>
+          <span class="status-pill">Watch For</span>
+        </header>
+
+        <section class="text-block">
+          <h2>Before You Answer</h2>
+          <ul class="lesson-list">
+            <li>Do not apply the percentage before finding the subsystem's total PE count.</li>
+            <li>Do not forget that <mark>active Arm cores also count as active PEs</mark>.</li>
+            <li>Do not add percentages together across GPU and NPU.</li>
+            <li>Keep each subsystem separate, then combine the final active totals at the end.</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
     <section class="content-card question-card" data-card-id="processing-elements-question-card">
       <div class="question-surface">
         <div class="question-toolbar" aria-label="Question tools">
