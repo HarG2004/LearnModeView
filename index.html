@@ -8,6 +8,148 @@
 </head>
 <body>
   <main class="page-shell">
-    <section class="lesson-card protected-card" data-card-id="arm-key-terms-introduction">
-      <div class="teacher-badge">Sir Isaac Newton</div>
-      <div class="card
+    <section class="content-card lesson-card" data-card-id="arm-key-terms-introduction">
+      <div class="card-frame framed-card">
+        <div class="teacher-badge">Sir Isaac Newton</div>
+        <header class="card-header">
+          <h1>Introduction to Key Terms</h1>
+          <span class="status-pill">Read</span>
+        </header>
+
+        <div class="lesson-intro">
+          What do you need to know about the 8 common architecture terms to write efficient
+          code for the Arm architecture?
+        </div>
+
+        <section class="text-block">
+          <h2>Introduction to Key Terms</h2>
+          <p>
+            The Arm architecture uses a set of terms that are crucial for programmers to
+            understand, often written in small capital letters and having specific meanings.
+            In this section, we will explore the most common terms and their implications,
+            including <mark>Processing Element (PE)</mark>, which is a generic term for an
+            implementation of the Arm architecture.
+          </p>
+        </section>
+
+        <section class="text-block">
+          <h2>Key Architecture Terms</h2>
+          <ul class="lesson-list">
+            <li>
+              A <mark>Processing Element (PE)</mark> refers to any component that has its own
+              program counter and can execute a program, such as a core in the Arm Cortex-A
+              processors.
+            </li>
+            <li>
+              <a href="#knowledge-bridge">Key insight</a>: Implementation Defined (IMP DEF)
+              features are defined by the specific micro-architecture and must present a
+              consistent behavior or value.
+            </li>
+            <li>
+              <a href="#knowledge-bridge">In practice</a>, the size of the caches is IMP DEF,
+              meaning that the architecture provides a defined mechanism for software to query
+              the cache sizes, but the actual size of the cache is determined by the processor
+              designer.
+            </li>
+            <li>
+              Unpredictable and <mark>Constrained Unpredictable</mark> behaviors are terms used
+              to describe behaviors that software should not rely on, such as providing a
+              misaligned translation table, which is advanced and represents bad software that
+              violates the architectural rule.
+            </li>
+            <li>
+              <mark>Deprecated</mark> features are being removed from the architecture, such as
+              the uses of the IT instruction and certain barrier instructions, which are
+              deprecated for performance reasons.
+            </li>
+          </ul>
+        </section>
+
+        <section class="text-block">
+          <h2>Understanding the Implications</h2>
+          <p>
+            Understanding these terms is crucial for programmers to write efficient and reliable
+            code. By knowing what each term means, developers can make informed decisions about
+            how to use the Arm architecture and avoid potential pitfalls, such as assuming that
+            features are always available or behave in a certain way, which is
+            <span class="struck">not always the case</span>. By being aware of the
+            Unpredictable and Constrained Unpredictable behaviors, developers can write more
+            robust code.
+          </p>
+        </section>
+      </div>
+    </section>
+
+    <section class="content-card bridge-card" id="knowledge-bridge" data-card-id="active-pe-knowledge-bridge">
+      <div class="card-frame framed-card">
+        <header class="card-header">
+          <h2>Processing Elements Refresher</h2>
+          <span class="status-pill">Review</span>
+        </header>
+
+        <section class="text-block">
+          <h2>What To Notice</h2>
+          <p>
+            The question is asking for <mark>total active PEs</mark>. That means each subsystem
+            should be handled on its own first, and only then should the results be added
+            together.
+          </p>
+        </section>
+
+        <section class="text-block">
+          <h2>Fast Method</h2>
+          <ul class="lesson-list">
+            <li>Count active Arm cores directly: <mark>2 cores = 2 active PEs</mark>.</li>
+            <li>For blocks with percentages, find total PEs first, then apply the activity rate.</li>
+            <li>Keep Arm, GPU, and NPU separate until the final addition.</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="content-card question-card" data-card-id="processing-elements-question-card">
+      <div class="question-surface">
+        <div class="question-toolbar" aria-label="Question tools">
+          <button class="tool-button bridge-tool" type="button" id="open-bridge" aria-label="Open review card">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M21.2 18.8 14.9 12.5c.8-1.7.5-3.8-.9-5.2a5.2 5.2 0 0 0-5.3-1.2l3.1 3.1-2.5 2.5-3.1-3.1c-.7 1.8-.3 3.9 1.1 5.3 1.4 1.4 3.5 1.7 5.2.9l6.3 6.3 2.4-2.3Z"></path>
+            </svg>
+          </button>
+          <button class="tool-button hint-tool" type="button" id="show-hint" aria-expanded="false" aria-controls="hint-panel" aria-label="Show hint">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 18.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Zm0-14.8a8.6 8.6 0 0 1 5.8 15l-.5.4c-.5.4-.8.8-.8 1.2v.6h-3v-.9c0-1 .4-1.8 1.3-2.6l.6-.5a5.6 5.6 0 1 0-9.4-4.1H3a8.6 8.6 0 0 1 9-8.6Zm-.1 4.7c2 0 3.5 1.3 3.5 3.1 0 1.1-.5 1.9-1.6 2.8-.8.7-1 1-1 1.7v.4h-3v-.7c0-1.4.5-2.3 1.7-3.2.6-.5.9-.8.9-1.2 0-.5-.4-.9-1.1-.9-.8 0-1.2.5-1.3 1.3H7.3c.1-2 1.8-3.3 4.6-3.3Z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <p class="question-prompt">
+          A system contains 2 active Arm cores, 3 GPU clusters with 4 Processing Elements (PEs)
+          each (75% active), and 1 Neural Processing Unit (NPU) with 8 PEs (50% active). How
+          many total active PEs are in the system?
+        </p>
+
+        <div class="hint-panel" id="hint-panel" hidden>
+          <h3>Hint</h3>
+          <p>
+            Count the Arm cores directly, then compute the active GPU PEs and active NPU PEs
+            separately before adding all three totals together.
+          </p>
+        </div>
+
+        <div class="option-list" role="list" aria-label="Answer choices">
+          <button class="option-button" type="button" data-choice="15" data-correct="true">15</button>
+          <button class="option-button" type="button" data-choice="22" data-correct="false">22</button>
+          <button class="option-button" type="button" data-choice="18" data-correct="false">18</button>
+          <button class="option-button" type="button" data-choice="20" data-correct="false">20</button>
+        </div>
+
+        <div class="feedback-panel" id="feedback-panel" aria-live="polite">
+          Select an answer to check your reasoning.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
